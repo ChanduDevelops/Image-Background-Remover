@@ -35,7 +35,7 @@ function removeBackground() {
   formData.append("size", "auto");
 
   const API_URL = "https://api.remove.bg/v1.0/removebg";
-  const API_KEY = "5G8t4SNtiD6L2HKKg6AdKN2u";
+  const API_KEY = "HNPJx4QteompDiPS7FkWUEFm";
 
   fetch("https://api.remove.bg/v1.0/removebg", {
     method: "POST",
