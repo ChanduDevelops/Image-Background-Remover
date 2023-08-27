@@ -12,3 +12,6 @@ Visit our website at https://chandu-develop.github.io/Image-Background-Remover/ 
 Please note that this website is designed for desktop view only.
 
 I hope you find this website useful! If you have any feedback or suggestions, please let me know.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more information.
