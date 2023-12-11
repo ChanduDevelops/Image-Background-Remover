@@ -1,3 +1,12 @@
+// import imglyRemoveBackground from "@imgly/background-removal";
+
+// let image_src = "./image.pnng"; // This could be ImageData, ArrayBuffer, Uint8Array, Blob, URL, or string
+
+// imglyRemoveBackground(image_src).then((blob) => {
+//     // The result is a blob encoded as PNG. It can be converted to an URL to be used as HTMLImage.src
+//     const url = URL.createObjectURL(blob);
+// });
+
 
 var inputImageButton = document.querySelector("#input-image");
 var previewImage = document.querySelector("#selected-image");
