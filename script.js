@@ -7,64 +7,50 @@
 //     const url = URL.createObjectURL(blob);
 // });
 
+let imgContainer = document.querySelector(".image-container")
 
-var inputImageButton = document.querySelector("#input-image");
-var previewImage = document.querySelector("#selected-image");
+var inputImageButton = document.getElementById("input-image");
+var previewImage = document.querySelector(".preview-image");
 var inputImage = document.createElement("img");
 var resultImage = document.createElement("img");
 
-var convertButton = document.querySelector("#convert-button");
-var downloadButton = document.querySelector("#download-button");
-var previewButton = document.querySelector("#preview-button");
-// var beforeButton = document.querySelector("#before-button");
-// var afterButton = document.querySelector("#after-button");
+var convertButton = document.querySelector(".convert");
+var downloadButton = document.querySelector(".download");
 
-var loadingArea = document.querySelector("#loading");
-loadingArea.style.display = "none";
+var loadingArea = document.querySelector(".loading");
 
 var imageProduced = false;
 var isClicked = false;
 var imageURL;
 
-function buffering() {
-  previewImage.style.zIndex = "-1";
-  loadingArea.style.display = "flex";
-  previewImage.classList.add("blur");
-  loadingArea.style.zIndex = "10";
-  setTimeout(() => {
-    loadingArea.style.zIndex = "-1";
-    previewImage.classList.remove("blur");
-    loadingArea.style.display = "none";
-  }, 3000);
-}
-
 function removeBackground() {
   const formData = new FormData();
   formData.append("image_file", inputImage);
   formData.append("size", "auto");
+  console.log("inside remove method");
+  const API_URL = "https://clipdrop-api.co/remove-background/v1"   //"https://api.remove.bg/v1.0/removebg";
+  const API_KEY = "32cd5e907519de860477daa22a55f6909badd54843f7663630fb09ff683a316c5648b74619e079f70ed33e96045619e8"  //"4sGX1xWUjSB56qBLxjVsUEg5";
 
-  const API_URL = "https://api.remove.bg/v1.0/removebg";
-  const API_KEY = "4sGX1xWUjSB56qBLxjVsUEg5";
-
-  fetch("https://api.remove.bg/v1.0/removebg", {
+  return fetch(API_URL, {
     method: "POST",
     headers: {
       "X-Api-Key": API_KEY,
     },
     body: formData,
+  }).then(response => {
+    console.log("1st then");
+    return response.blob()
   })
-    .then(function (response) {
-      return response.blob();
-    })
-    .then(function (blob) {
-      const url = URL.createObjectURL(blob);
+    .then(blob => {
+      const url = URL.createObjectURL(blob)
       imageURL = url;
       imageProduced = true;
       resultImage.src = url;
+      console.log("2nd then");
+      return resultImage
+    }).catch(e => {
+      console.error("Error :", e.message)
     })
-    .catch((error) => {
-      console.error("Error occurred:", error);
-    });
 }
 
 function download() {
@@ -77,36 +63,45 @@ function download() {
 }
 
 inputImageButton.onchange = () => {
-  loadingArea.style.zIndex = "-1";
-  previewImage.style.zIndex = "1";
   const reader = new FileReader();
   inputImage = inputImageButton.files[0];
+
   reader.readAsDataURL(inputImageButton.files[0]);
   reader.onload = () => {
     isClicked = true;
     previewImage.src = reader.result;
     // inputImage = reader.result;
-  };
-};
+  }
+}
 
-convertButton.onclick = () => {
-  console.log(inputImageButton.files.length);
-  console.log(isClicked);
+convertButton.addEventListener("click", clikcConvert)
+async function clikcConvert() {
   if (inputImageButton.files.length === 0 || isClicked == false) {
     window.alert("Cannot convert without Image\nPlease select an image");
   } else {
-    buffering();
-    removeBackground();
+    processImage()
   }
-};
+}
 
-previewButton.onclick = () => {
-  if (imageProduced) {
-    previewImage.src = resultImage.src;
-  } else {
-    window.alert("Click again on convert");
+async function processImage() {
+  imgContainer.classList.add("blur");
+
+  try {
+    let result = await removeBackground();
+    console.log(result);
+    if (result) {
+      console.log("got result");
+      previewImage.src = result.src;
+    }
+    else {
+      console.log("else");
+    }
+  } catch (e) {
+    console.log("error");
   }
-};
+
+  imgContainer.classList.remove("blur");
+}
 
 downloadButton.onclick = () => {
   if (inputImageButton.files.length === 0) {
@@ -118,20 +113,7 @@ downloadButton.onclick = () => {
       window.alert("Please wait Image is in processing");
     }
   }
-};
-
-// beforeButton.onclick = () => {
-//   previewImage.classList.add("blur");
-//   setTimeout(() => {
-//     previewImage.classList.remove("blur");
-//   }, 250);
-//   previewImage.src = currentImageURL;
-// };
-
-// afterButton.onclick = () => {
-//   previewImage.classList.add("blur");
-//   setTimeout(() => {
-//     previewImage.classList.remove("blur");
-//   }, 250);
-//   previewImage.src = resultImage.src;
-// };
+  setTimeout(() => {
+    window.location.reload()
+  }, 7000);
+}

@@ -1,61 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/icon1.ico" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <title>Remove Image Background</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+    <link rel="icon"
+          href="images/icon1.ico" />
+    <link rel="stylesheet"
+          href="style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+          rel='stylesheet'>
+
+    <title>Image Background Remover</title>
   </head>
 
   <body>
-    <h1 id="title">Remove Image Background</h1>
-    <marquee direction="left" height="100px">
-      *** Desktop view only ***
-    </marquee>
-    <div class="container" id="container">
-      <div class="image-container" id="image-container">
-        <div class="image-preview" id="left">
-          <label for="selected-image" id="image-label"></label>
-          <img src="images/kittu.jpg" id="selected-image" alt="" />
+    <header>
+      <h1 class="title">Remove Image Background</h1>
+      <marquee direction="left"
+               height="100px">
+        *** Desktop view only ***
+      </marquee>
+    </header>
+    <main>
+      <div class="main-wrapper">
+        <div class="image-container">
+          <img src="images/kittu.jpg"
+               class="preview-image"
+               alt="" />
         </div>
-        <div id="loading">
-          <div id="percent"></div>
-        </div>
-        <div class="preview-buttons" id="preview-buttons">
-          <!-- <button id="before-button" title="Before Background Removal">
-            <span id="before-btn">Before</span>
-          </button>
-          <button id="after-button" title="After Background Removal">
-            <span id="after-btn">After</span> -->
-            <button id="preview-button">Preview</button>
-          </button>
+
+        <div class="operations">
+          <div class="input-image-box">
+            <label for="input-image"
+                   class="input-image-label btn">
+              <i class='bx bx-image-add'></i>
+              Choose photo
+            </label>
+            <input type="file"
+                   accept="image/*"
+                   id="input-image" />
+          </div>
+          <div>
+            <button class="convert btn"
+                    title="Convert image">Convert
+            </button>
+
+            <button class="download btn"
+                    title="Download image">Download
+            </button>
+          </div>
         </div>
       </div>
-
-      <div class="operation-buttons" id="right">
-        <div class="input-image" id="input-image-box">
-          <label for="input-image" id="input-image-label">
-            <span class="material-icons">add_photo_alternate</span> &nbsp;
-            Choose photo
-          </label>
-          <input type="file" accept="image/*" id="input-image" />
-        </div>
-        <div class="cd-buttons" id="cd-buttons">
-          <button id="convert-button" title="Convert image" value="Upload">
-            <span id="upload">Convert</span>
-          </button>
-
-          <button id="download-button" title="Download image">
-            <span id="download">Download</span>
-          </button>
-        </div>
-      </div>
-    </div>
+    </main>
     <script src="script.js"></script>
   </body>
+
 </html>
