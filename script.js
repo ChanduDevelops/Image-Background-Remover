@@ -7,10 +7,11 @@
 //     const url = URL.createObjectURL(blob);
 // });
 
-let imgContainer = document.querySelector(".image-container")
 
 var inputImageButton = document.getElementById("input-image");
 var previewImage = document.querySelector(".preview-image");
+var imgContainer = document.querySelector(".image-container")
+
 var inputImage = document.createElement("img");
 var resultImage = document.createElement("img");
 
@@ -22,6 +23,16 @@ var loadingArea = document.querySelector(".loading");
 var imageProduced = false;
 var isClicked = false;
 var imageURL;
+
+// var mediaQuery = matchMedia("(max-width:480px)")
+// function setMobileImage(e) {
+//   if (e.matches) {
+//     imgContainer.innerHTML = '<img src="images/chris2.jpg" class="preview-image" alt = "" /> '
+//   }
+// }
+// setMobileImage(mediaQuery);
+// mediaQuery.addEventListener("change", setMobileImage);
+
 
 function removeBackground() {
   const formData = new FormData();
