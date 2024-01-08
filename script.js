@@ -15,6 +15,7 @@ var imgContainer = document.querySelector(".image-container")
 var inputImage = document.createElement("img");
 var resultImage = document.createElement("img");
 
+var cdDiv = document.querySelector(".cd")
 var convertButton = document.querySelector(".convert");
 var downloadButton = document.querySelector(".download");
 
@@ -83,12 +84,16 @@ inputImageButton.onchange = () => {
     previewImage.src = reader.result;
     // inputImage = reader.result;
   }
+  cdDiv.classList.add("open")
 }
 
 convertButton.addEventListener("click", clikcConvert)
 async function clikcConvert() {
   if (inputImageButton.files.length === 0 || isClicked == false) {
     window.alert("Cannot convert without Image\nPlease select an image");
+    setTimeout(() => {
+      window.location.reload()
+    }, 500);
   } else {
     processImage()
   }
@@ -126,5 +131,5 @@ downloadButton.onclick = () => {
   }
   setTimeout(() => {
     window.location.reload()
-  }, 7000);
+  }, 5000);
 }

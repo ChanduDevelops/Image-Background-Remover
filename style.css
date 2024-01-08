@@ -7,7 +7,7 @@
 }
 
 body {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     font-family: 'Poppins', sans-serif;
     background-color: #d0e9f9;
 }
@@ -28,7 +28,7 @@ h1 {
 }
 
 main {
-    height: 90svh;
+    min-height: 90svh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -49,6 +49,7 @@ input[type='file'] {
     display: flex;
     justify-content: center;
     gap: 50px;
+    margin-top: 0;
 }
 
 .image-container {
@@ -105,6 +106,14 @@ input[type='file'] {
 } 
 */
 
+/*
+.colors {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background:red;
+} */
+
 .btn {
     padding: 10px 20px;
     font-size: 24px;
@@ -123,10 +132,18 @@ input[type='file'] {
     align-items: center;
 }
 
-.operations div:nth-child(2) {
+.operations .cd {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.cd.close {
+    display: none;
+}
+
+.cd.open {
+    display: flex;
 }
 
 .input-image-label {
@@ -186,12 +203,18 @@ input[type='file'] {
 }
 
 @media screen and (max-width:768px) {
+    h1 {
+        font-size: 36px;
+    }
+
     .main-wrapper {
         justify-content: center;
         gap: 1.5em;
     }
 
     .image-container {
+        position: relative;
+        top: 20px;
         max-width: 500px;
     }
 
@@ -204,7 +227,7 @@ input[type='file'] {
         top: 30px;
     }
 
-    .operations div:nth-child(2) {
+    .operations d.cd {
         gap: 1em;
     }
 }
@@ -239,7 +262,7 @@ input[type='file'] {
         gap: 3em;
     }
 
-    .operations div:nth-child(2) {
+    .operations .cd {
         flex-direction: row;
         align-items: baseline;
         gap: 1em;
@@ -249,10 +272,12 @@ input[type='file'] {
 @media screen and (max-width:462px) {
 
     h1 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .main-wrapper {
+        position: relative;
+        top: -50px;
         width: 400px;
         display: flex;
         flex-direction: column;
@@ -260,6 +285,7 @@ input[type='file'] {
     }
 
     .image-container {
+        top: 1em;
         max-width: 350px;
     }
 
@@ -272,18 +298,23 @@ input[type='file'] {
     }
 
     .operations {
-        top: 30px;
         display: flex;
         flex-direction: column;
         gap: 3em;
         width: 300px;
     }
 
-    .operations div:nth-child(2) {
+    .operations .cd {
         width: 100%;
         flex-direction: row;
         align-items: baseline;
         justify-content: space-evenly;
     }
 
+}
+
+@media screen and (max-width:400px) {
+    h1 {
+        font-size: 24px;
+    }
 }
