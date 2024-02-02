@@ -1,7 +1,7 @@
 # Image Background Remover
 
 Image Background Remover is a website that helps you remove the background from your photos. With just a few clicks, you can upload your photo, remove the background, preview the result, and download the final image to your local computer.
-Visit our website at https://chandu-develop.github.io/Image-Background-Remover/ to get started!
+Visit our website at https://removemybg.netlify.app/ to get started!
 
 ## How to Use
 1. Open the website and click on the "Choose Photo" button to upload your photo.
