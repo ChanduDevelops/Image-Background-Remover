@@ -72,8 +72,6 @@ input[type='file'] {
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    border: 2px dotted #fff;
-    padding: 25px;
     overflow: hidden;
 }
 
@@ -85,26 +83,27 @@ input[type='file'] {
 }
 
 .blur {
-    filter: blur(5px);
+    filter: blur(2px);
 }
 
-/* 
-.loading {
+
+.blur .img-border::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     margin: auto;
-    width: 30%;
+    width: 150px;
     aspect-ratio: 1/1;
     border: 10px solid #f3f3f3;
     border-top: 10px solid #3498db;
     border-radius: 50%;
     animation: spin 2s linear infinite;
-    z-index: 1;
-} 
-*/
+    z-index: 100;
+}
+
 
 /*
 .colors {
@@ -168,7 +167,12 @@ input[type='file'] {
 }
 
 .download {
+    display: none;
     background-color: yellowgreen;
+}
+
+.download-open {
+    display: block;
 }
 
 .blur {
