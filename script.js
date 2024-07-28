@@ -25,28 +25,19 @@ var imageProduced = false;
 var isClicked = false;
 var imageURL;
 
-// var mediaQuery = matchMedia("(max-width:480px)")
-// function setMobileImage(e) {
-//   if (e.matches) {
-//     imgContainer.innerHTML = '<img src="images/chris2.jpg" class="preview-image" alt = "" /> '
-//   }
-// }
-// setMobileImage(mediaQuery);
-// mediaQuery.addEventListener("change", setMobileImage);
-
 
 function removeBackground() {
   const formData = new FormData();
   formData.append("image_file", inputImage);
   formData.append("size", "auto");
 
-  const API_URL = "https://clipdrop-api.co/remove-background/v1"   //"https://api.remove.bg/v1.0/removebg";
-  const API_KEY = "32cd5e907519de860477daa22a55f6909badd54843f7663630fb09ff683a316c5648b74619e079f70ed33e96045619e8"  //"4sGX1xWUjSB56qBLxjVsUEg5";
+  const API_URL = "https://sdk.photoroom.com/v1/segment"   //"https://api.remove.bg/v1.0/removebg";
+  const API_KEY = "462e85b63d6eb909eaed3b2207304de1a39a6e48"  //"4sGX1xWUjSB56qBLxjVsUEg5";
 
   return fetch(API_URL, {
     method: "POST",
     headers: {
-      "X-Api-Key": API_KEY,
+     'x-api-key': API_KEY,
     },
     body: formData,
   }).then(response => response.blob())
@@ -55,6 +46,7 @@ function removeBackground() {
       imageURL = url;
       imageProduced = true;
       resultImage.src = url;
+      console.log(resultImage);
       return resultImage
     }).catch(e => {
       console.error("Error :", e.message)
